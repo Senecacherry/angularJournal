@@ -1,2 +1,9 @@
 <h2>The Entry Will be below!</h2>
-<h3>{{entry}}</h3>
+<ul>
+    <li *ngFor="let entries of entry;">
+        <button>
+            <span>{{entry.id}}</span> |
+            <span>{{entry.title}}</span>
+        </button>
+    </li>
+</ul>

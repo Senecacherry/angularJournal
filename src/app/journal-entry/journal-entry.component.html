@@ -1,9 +1,25 @@
-<h2>The Entry Will be below!</h2>
-<ul>
-    <li *ngFor="let entries of entry;">
-        <button>
-            <span>{{entry.id}}</span> |
-            <span>{{entry.title}}</span>
+<!-- <div *ngIf="!buttonSelected"> -->
+<h2>The entry will be below!</h2>
+
+<ul class="entries">
+    <li *ngFor="let entry of entry">
+        <button [class.selected]="entry === selectedEntry" type="button" (click)="onSelect(entry)">
+            <span class="badge">{{entry.id}}</span> 
+            <span class="title">{{entry.title  }}</span>
         </button>
     </li>
 </ul>
+<!-- </div> -->
+
+<div *ngIf="selectedEntry">
+    <h2>{{ selectedEntry.title | uppercase }} DETAILS: </h2>
+    
+    <div>
+        <textarea id="entry-title" [(ngModel)]="selectedEntry.title" placeholder="entrytitle"></textarea>
+    </div>
+    
+    <div>
+        <textarea id="entry-body" [(ngModel)]="selectedEntry.post" placeholder="entrytitle"></textarea>
+    </div>
+</div>
+
